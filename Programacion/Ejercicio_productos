@@ -1,0 +1,121 @@
+import java.util.ArrayList; //ocupar una lista
+import java.util.Scanner; //ingresar el usuario
+//Las anteriores se llaman variables globales.
+
+public class SistemaInventarioConsola {
+    private static ArrayList<Producto> inventario = new ArrayList<>(); //claase representa cada producto del inventario.
+    private static Scanner scanner = new Scanner(System.in);
+
+// a esto se le llama constructor.
+    public static void main(String[] args) {
+        // Productos de ejemplo
+        inventario.add(new Producto("001", "Laptop", 1200.00, 10));
+        inventario.add(new Producto("002", "Mouse", 25.50, 30));
+        inventario.add(new Producto("003", "Teclado", 45.75, 25));
+
+        boolean salir = false;
+        
+        while (!salir) {
+            System.out.println("\n=== SISTEMA DE INVENTARIO ===");
+            System.out.println("1. Agregar producto");
+            System.out.println("2. Buscar producto");
+            System.out.println("3. Listar inventario");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione una opción: ");
+            
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
+            
+            switch (opcion) {
+                case 1:
+                    agregarProducto();
+                    break;
+                case 2:
+                    buscarProducto();
+                    break;
+                case 3:
+                    listarInventario();
+                    break;
+                case 4:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        }
+        
+        System.out.println("Sistema cerrado. ¡Hasta pronto!");
+    }
+
+    private static void agregarProducto() {
+        System.out.println("\n--- AGREGAR PRODUCTO ---");
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+        
+        System.out.print("Precio: ");
+        double precio = scanner.nextDouble();
+        
+        System.out.print("Cantidad: ");
+        int cantidad = scanner.nextInt();
+        scanner.nextLine(); // Limpiar buffer
+        
+        inventario.add(new Producto(codigo, nombre, precio, cantidad));
+        System.out.println("Producto agregado exitosamente!");
+    }
+
+    private static void buscarProducto() {
+        System.out.println("\n--- BUSCAR PRODUCTO ---");
+        System.out.print("Ingrese el código: ");
+        String codigo = scanner.nextLine();
+        
+        for (Producto p : inventario) {
+            if (p.getCodigo().equals(codigo)) {
+                System.out.println("Producto encontrado:");
+                System.out.println(p);
+                return;
+            }
+        }
+        
+        System.out.println("Producto no encontrado");
+    }
+
+    private static void listarInventario() {
+        System.out.println("\n--- INVENTARIO ACTUAL ---");
+        if (inventario.isEmpty()) {
+            System.out.println("El inventario está vacío");
+        } else {
+            for (Producto p : inventario) {
+                System.out.println(p);
+            }
+            System.out.println("Total de productos: " + inventario.size());
+        }
+    }
+}
+
+class Producto {
+    private String codigo;
+    private String nombre;
+    private double precio;
+    private int cantidad;
+
+    public Producto(String codigo, String nombre, double precio, int cantidad) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+
+    public String getCodigo() { return codigo; }
+    public String getNombre() { return nombre; }
+    public double getPrecio() { return precio; }
+    public int getCantidad() { return cantidad; }
+//%s  es string reemplaza el código del valor del nombre  y %f es para los decimales. y 2f hasta la centécima. %d entero.
+    @Override
+    public String toString() {
+        return String.format("Código: %s, Nombre: %s, Precio: $%.2f, Cantidad: %d", 
+                           codigo, nombre, precio, cantidad);
+    }
+}

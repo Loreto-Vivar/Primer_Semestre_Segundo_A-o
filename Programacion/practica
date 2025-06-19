@@ -1,0 +1,36 @@
+package actividad_tienda;
+import javax.swing.*; // Necesario para componentes de interfaz gráfica
+import java.awt.event.ActionEvent; // Para manejar eventos (clics)
+import java.awt.event.ActionListener; // Interfaz para el listener de eventos
+public class TiendaRopaMinimaGUI {
+	public static void main(String[] args) {
+        // Ejecutar la creación de la GUI en el hilo seguro de Swing
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Mi Tienda de Ropa (Mínimo)"); // La ventana
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   // Cerrar al salir
+            frame.setSize(300, 150);                                // Tamaño
+            frame.setLocationRelativeTo(null);                      // Centrar
+
+            JLabel etiqueta = new JLabel("Bienvenido a la Tienda!"); // Un texto
+            JButton boton = new JButton("Ver Ropa");                   // Un botón
+
+            // Acción al hacer clic en el botón
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    etiqueta.setText("¡Ropa cargada!"); // Cambia el texto
+                    JOptionPane.showMessageDialog(frame, "Catálogo simulado."); // Mensaje emergente
+                }
+            });
+
+            // Panel para organizar los componentes
+            JPanel panel = new JPanel();
+            panel.add(etiqueta); // Añade el texto al panel
+            panel.add(boton);    // Añade el botón al panel
+
+            frame.add(panel);    // Añade el panel a la ventana
+            frame.setVisible(true); // Mostrar la ventana
+        });
+    }
+
+}

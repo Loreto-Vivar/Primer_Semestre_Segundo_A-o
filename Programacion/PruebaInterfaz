@@ -1,0 +1,38 @@
+import javax.swing.*; // Importa las clases necesarias de Swing
+
+public class InterfazCorta {
+
+    public static void main(String[] args) {
+        // Asegura que la GUI se cree y actualice en el Event Dispatch Thread (EDT)
+        SwingUtilities.invokeLater(() -> {
+            // 1. Crear la ventana principal (JFrame)
+            JFrame frame = new JFrame("Mi Ventana Corta");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cierra la app al cerrar la ventana
+            frame.setSize(300, 150); // Tamaño de la ventana: ancho x alto
+            frame.setLocationRelativeTo(null); // Centra la ventana en la pantalla
+
+            // 2. Crear una etiqueta de texto (JLabel)
+            JLabel label = new JLabel("¡Hola desde Java!");
+            label.setHorizontalAlignment(SwingConstants.CENTER); // Centra el texto
+
+            // 3. Crear un botón (JButton)
+            JButton button = new JButton("Haz clic");
+
+            // 4. Añadir una acción al botón
+            button.addActionListener(e -> {
+                label.setText("¡Botón clickeado!"); // Cambia el texto de la etiqueta al hacer clic
+            });
+
+            // 5. Crear un panel para organizar los componentes (JPanel)
+            JPanel panel = new JPanel();
+            panel.add(label);   // Añade la etiqueta al panel
+            panel.add(button);  // Añade el botón al panel
+
+            // 6. Añadir el panel a la ventana
+            frame.add(panel);
+
+            // 7. Hacer visible la ventana
+            frame.setVisible(true);
+        });
+    }
+}

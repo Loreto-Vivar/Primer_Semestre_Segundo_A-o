@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);  // Corrección de sintaxis
+
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Ingresa tu edad: ");
+        int edad = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer
+
+        System.out.print("Ingresa tu ciudad: ");
+        String ciudad = sc.nextLine();
+
+        // Mejorar formato de salida con espacios y puntuación
+        System.out.println("Hola " + nombre + ", tienes " + edad + " años y vives en " + ciudad + ".");
+        
+        sc.close(); // Buena práctica: cerrar el scanner
+    }
+}
