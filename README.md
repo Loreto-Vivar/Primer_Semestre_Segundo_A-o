@@ -1,4 +1,4 @@
-# Programación
+# Información importante
 
 ## ℹ️ Descripción Genereal: 
 Este repositorio almacena todos los archivos, de las asginaturas trabajadas durante el primer semestre del 2025.
