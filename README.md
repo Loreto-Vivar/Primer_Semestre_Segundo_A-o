@@ -36,7 +36,6 @@ Los archivos son actualizados a través del uso del programa llamado Visual Code
 
 
 
-### Imagen de referencia de Visual Code:
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](Visual.png)
 
